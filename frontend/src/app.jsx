@@ -1,9 +1,20 @@
-function App(){
-    return(
-    <div>
-        hi
-    </div>
-    );
+// import { useState } from 'react'
+
+import NavBar from "./components/NavBar"
+
+
+function App() {
+
+  return (
+    <>
+      <div>
+        <NavBar>
+          
+        </NavBar>
+      </div>
+
+    </>
+  )
 }
 
-export default App;
+export default App
