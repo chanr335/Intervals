@@ -6,3 +6,9 @@ const router = Router();
 router.get("/", (req, res) => {
     return res.json("Welcome");
 });
+
+router.get("/login", (req, res) => {
+    return res.json("Login")
+});
+
+export default router;
