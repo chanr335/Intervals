@@ -1,5 +1,3 @@
-
-
 export default function NavBar(){
     return(
         <div className="navbar bg-base-100">
