@@ -11,11 +11,18 @@ function Game() {
 
   function handleClick() {
     setState(!active);
-    console.log(active);
-    if (active === true) {
-      synth.triggerAttackRelease("C4", "8n");
-      synth.triggerAttackRelease("G3", "8n");
-    }
+    // Start the transport
+    Tone.Transport.start();
+
+    // Schedule the first note
+    Tone.Transport.schedule((time) => {
+      synth.triggerAttackRelease("C4", "8n", time);
+    }, 0); // 0 seconds from now
+
+    // Schedule the second note with a pause
+    Tone.Transport.schedule((time) => {
+      synth.triggerAttackRelease("G4", "8n", time);
+    }, "+1"); // 1 second from now
   }
 
   //Choose a random note from the list
