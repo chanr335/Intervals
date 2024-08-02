@@ -6,22 +6,20 @@ function Game() {
   const synth = new Tone.Synth().toDestination();
   const notes = ["A", "B", "C", "D", "E", "F", "G"];
 
-  //create a "next" button that will sing a root note and interval
-  const [active, setState] = useState(false);
-
   function handleClick() {
-    setState(!active);
+    const rootNote = Math.floor(Math.random() * notes.length);
+    const intNote = Math.floor(Math.random() * notes.length);
     // Start the transport
-    Tone.Transport.start();
+    Tone.getTransport().start();
 
     // Schedule the first note
-    Tone.Transport.schedule((time) => {
-      synth.triggerAttackRelease("C4", "8n", time);
-    }, 0); // 0 seconds from now
+    Tone.getTransport().schedule((time) => {
+      synth.triggerAttackRelease(notes[rootNote] + "4", "8n", time);
+    }, "+0"); // 0 seconds from now
 
     // Schedule the second note with a pause
-    Tone.Transport.schedule((time) => {
-      synth.triggerAttackRelease("G4", "8n", time);
+    Tone.getTransport().schedule((time) => {
+      synth.triggerAttackRelease(notes[intNote] + "4", "8n", time);
     }, "+1"); // 1 second from now
   }
 
