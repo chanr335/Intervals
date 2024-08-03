@@ -13,7 +13,6 @@ export default function Button() {
   const [state10, set10] = useState(0);
   const [state11, set11] = useState(0);
   const [state12, set12] = useState(0);
-  const [state13, set13] = useState(0);
 
   return (
     <div>
@@ -65,10 +64,6 @@ export default function Button() {
         12th
       </button>
       {state12}
-      <button className="btn" onClick={() => set13(state13 + 1)}>
-        13th
-      </button>
-      {state13}
     </div>
   );
 }
