@@ -1,9 +1,30 @@
-export default function Button({ state, set }) {
+import buttonCheck from "../utils/buttonCheck";
+import { useEffect } from "react";
+
+export default function Button({ state, set, intNote }) {
+  useEffect(() => {
+    if (state !== 0) {
+      handleClick(state, intNote);
+    }
+  }, [state]);
+
+  function handleClick(state, intNote) {
+    console.log({ state }, { intNote });
+
+    const correct = buttonCheck(state, intNote);
+    console.log({ correct });
+    if (correct) {
+      console.log("correct");
+    } else {
+      console.log("incorrect");
+    }
+    set(0);
+    console.log({ state });
+  }
   return (
     <div>
       <button className="btn" onClick={() => set(state + 1)}>
         Unison
-        {state}
       </button>
       <button className="btn" onClick={() => set(state + 2)}>
         2nd
@@ -29,7 +50,7 @@ export default function Button({ state, set }) {
       <button className="btn" onClick={() => set(state + 9)}>
         9th
       </button>
-      <button className="btn" onClick={() => set(state + 1)}>
+      <button className="btn" onClick={() => set(state + 10)}>
         10th
       </button>
       <button className="btn" onClick={() => set(state + 11)}>
