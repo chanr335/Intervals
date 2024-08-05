@@ -1,4 +1,3 @@
-import Button from "./Button";
 import Game from "./Game";
 
 export default function Box() {

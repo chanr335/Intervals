@@ -10,6 +10,8 @@ function Game() {
   const [rootNote, setRootNote] = useState(null);
   const [intNote, setIntNote] = useState(null);
 
+  const [state, set] = useState(0);
+
   const notes = [
     "A",
     "A#",
@@ -59,7 +61,7 @@ function Game() {
       <button className="btn" onClick={handleClick}>
         Next: {rootNote} , {intNote}
       </button>
-      <Button />
+      <Button state={state} set={set} />
     </div>
   );
 }

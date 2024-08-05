@@ -1,69 +1,43 @@
-import { useState } from "react";
-
-export default function Button() {
-  const [state1, set1] = useState(0);
-  const [state2, set2] = useState(0);
-  const [state3, set3] = useState(0);
-  const [state4, set4] = useState(0);
-  const [state5, set5] = useState(0);
-  const [state6, set6] = useState(0);
-  const [state7, set7] = useState(0);
-  const [state8, set8] = useState(0);
-  const [state9, set9] = useState(0);
-  const [state10, set10] = useState(0);
-  const [state11, set11] = useState(0);
-  const [state12, set12] = useState(0);
-
+export default function Button({ state, set }) {
   return (
     <div>
-      <button className="btn" onClick={() => set1(state1 + 1)}>
+      <button className="btn" onClick={() => set(state + 1)}>
         Unison
+        {state}
       </button>
-      {state1}
-      <button className="btn" onClick={() => set2(state2 + 1)}>
+      <button className="btn" onClick={() => set(state + 2)}>
         2nd
       </button>
-      {state2}
-      <button className="btn" onClick={() => set3(state3 + 1)}>
+      <button className="btn" onClick={() => set(state + 3)}>
         3rd
       </button>
-      {state3}
-      <button className="btn" onClick={() => set4(state4 + 1)}>
+      <button className="btn" onClick={() => set(state + 4)}>
         4th
       </button>
-      {state4}
-      <button className="btn" onClick={() => set5(state5 + 1)}>
+      <button className="btn" onClick={() => set(state + 5)}>
         5th
       </button>
-      {state5}
-      <button className="btn" onClick={() => set6(state6 + 1)}>
+      <button className="btn" onClick={() => set(state + 6)}>
         6th
       </button>
-      {state6}
-      <button className="btn" onClick={() => set7(state7 + 1)}>
+      <button className="btn" onClick={() => set(state + 7)}>
         7th
       </button>
-      {state7}
-      <button className="btn" onClick={() => set8(state8 + 1)}>
+      <button className="btn" onClick={() => set(state + 8)}>
         8th
       </button>
-      {state8}
-      <button className="btn" onClick={() => set9(state9 + 1)}>
+      <button className="btn" onClick={() => set(state + 9)}>
         9th
       </button>
-      {state9}
-      <button className="btn" onClick={() => set10(state10 + 1)}>
+      <button className="btn" onClick={() => set(state + 1)}>
         10th
       </button>
-      {state10}
-      <button className="btn" onClick={() => set11(state11 + 1)}>
+      <button className="btn" onClick={() => set(state + 11)}>
         11th
       </button>
-      {state11}
-      <button className="btn" onClick={() => set12(state12 + 1)}>
+      <button className="btn" onClick={() => set(state + 12)}>
         12th
       </button>
-      {state12}
     </div>
   );
 }
