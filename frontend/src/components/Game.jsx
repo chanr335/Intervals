@@ -34,6 +34,9 @@ function Game() {
     setRootNote(rootNote);
     setIntNote(intNote);
 
+    console.log(rootNote, intNote);
+    console.log(newNoteList[rootNote], newNoteList[intNote]);
+
     Tone.getTransport().start();
     //Play the notes
     Tone.getTransport().schedule((time) => {
@@ -53,12 +56,7 @@ function Game() {
       </button>
       <div className="flex mb-10" />
       <div className="flex bg-sky-50 card card-compact shadow-xl">
-        <Button
-          className="flex content-center"
-          state={state}
-          set={set}
-          intNote={intNote}
-        />
+        <Button state={state} set={set} intNote={intNote} />
       </div>
     </div>
   );

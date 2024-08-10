@@ -1,9 +1,10 @@
 import buttonCheck from "../utils/buttonCheck";
 import { useEffect } from "react";
+import "../index.css";
 
 export default function Button({ state, set, intNote }) {
   useEffect(() => {
-    if (state !== 0) {
+    if (state !== -1) {
       handleClick(state, intNote);
     }
   }, [state]);
@@ -15,46 +16,48 @@ export default function Button({ state, set, intNote }) {
     } else {
       console.log("incorrect");
     }
-    set(0);
+    set(-1);
   }
   return (
-    <div className="grid grid-cols-3 gap-3 justify-center">
-      <button className="btn btn-wide" onClick={() => set(state + 1)}>
-        Unison
-      </button>
-      <button className="btn btn-wide" onClick={() => set(state + 2)}>
-        2nd
-      </button>
-      <button className="btn btn-wide" onClick={() => set(state + 3)}>
-        3rd
-      </button>
-      <button className="btn btn-wide" onClick={() => set(state + 4)}>
-        4th
-      </button>
-      <button className="btn btn-wide" onClick={() => set(state + 5)}>
-        5th
-      </button>
-      <button className="btn btn-wide" onClick={() => set(state + 6)}>
-        6th
-      </button>
-      <button className="btn btn-wide" onClick={() => set(state + 7)}>
-        7th
-      </button>
-      <button className="btn btn-wide" onClick={() => set(state + 8)}>
-        8th
-      </button>
-      <button className="btn btn-wide" onClick={() => set(state + 9)}>
-        9th
-      </button>
-      <button className="btn btn-wide" onClick={() => set(state + 10)}>
-        10th
-      </button>
-      <button className="btn btn-wide" onClick={() => set(state + 11)}>
-        11th
-      </button>
-      <button className="btn btn-wide" onClick={() => set(state + 12)}>
-        Octave
-      </button>
+    <div className="flex justify-center" data-theme="lemonade">
+      <div className="grid grid-cols-3 gap-3 justify-center">
+        <button className="custom-btn" onClick={() => set(0)}>
+          Unison
+        </button>
+        <button className="custom-btn" onClick={() => set(1)}>
+          Minor Second
+        </button>
+        <button className="custom-btn" onClick={() => set(2)}>
+          Major Second
+        </button>
+        <button className="custom-btn" onClick={() => set(3)}>
+          Minor Third
+        </button>
+        <button className="custom-btn" onClick={() => set(4)}>
+          Major Third
+        </button>
+        <button className="custom-btn" onClick={() => set(5)}>
+          Perfect Fourth
+        </button>
+        <button className="custom-btn" onClick={() => set(6)}>
+          Perfect Fifth
+        </button>
+        <button className="custom-btn" onClick={() => set(7)}>
+          Minor Sixth
+        </button>
+        <button className="custom-btn" onClick={() => set(8)}>
+          Major Sixth
+        </button>
+        <button className="custom-btn" onClick={() => set(9)}>
+          Minor Seventh
+        </button>
+        <button className="custom-btn" onClick={() => set(10)}>
+          Major Seventh
+        </button>
+        <button className="custom-btn" onClick={() => set(11)}>
+          Octave
+        </button>
+      </div>
     </div>
   );
 }
