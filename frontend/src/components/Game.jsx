@@ -41,16 +41,25 @@ function Game() {
     }, "+0"); // 0 seconds from now
 
     Tone.getTransport().schedule((time) => {
-      synth.triggerAttackRelease(newNoteList[intNote] + "4", "8n", time);
+      synth.triggerAttackRelease(newNoteList[intNote] + "5", "8n", time);
     }, "+1"); // 1 second from now
   }
 
   return (
     <div>
       <button className="btn" onClick={handleClick}>
-        Next: {rootNote} , {intNote}
+        {/* Next: {rootNote} , {intNote} */}
+        Next
       </button>
-      <Button state={state} set={set} intNote={intNote} />
+      <div className="flex mb-10" />
+      <div className="flex bg-sky-50 card card-compact shadow-xl">
+        <Button
+          className="flex content-center"
+          state={state}
+          set={set}
+          intNote={intNote}
+        />
+      </div>
     </div>
   );
 }

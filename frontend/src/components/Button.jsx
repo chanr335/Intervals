@@ -9,55 +9,51 @@ export default function Button({ state, set, intNote }) {
   }, [state]);
 
   function handleClick(state, intNote) {
-    console.log({ state }, { intNote });
-
     const correct = buttonCheck(state, intNote);
-    console.log({ correct });
     if (correct) {
       console.log("correct");
     } else {
       console.log("incorrect");
     }
     set(0);
-    console.log({ state });
   }
   return (
-    <div>
-      <button className="btn" onClick={() => set(state + 1)}>
+    <div className="grid grid-cols-3 gap-3 justify-center">
+      <button className="btn btn-wide" onClick={() => set(state + 1)}>
         Unison
       </button>
-      <button className="btn" onClick={() => set(state + 2)}>
+      <button className="btn btn-wide" onClick={() => set(state + 2)}>
         2nd
       </button>
-      <button className="btn" onClick={() => set(state + 3)}>
+      <button className="btn btn-wide" onClick={() => set(state + 3)}>
         3rd
       </button>
-      <button className="btn" onClick={() => set(state + 4)}>
+      <button className="btn btn-wide" onClick={() => set(state + 4)}>
         4th
       </button>
-      <button className="btn" onClick={() => set(state + 5)}>
+      <button className="btn btn-wide" onClick={() => set(state + 5)}>
         5th
       </button>
-      <button className="btn" onClick={() => set(state + 6)}>
+      <button className="btn btn-wide" onClick={() => set(state + 6)}>
         6th
       </button>
-      <button className="btn" onClick={() => set(state + 7)}>
+      <button className="btn btn-wide" onClick={() => set(state + 7)}>
         7th
       </button>
-      <button className="btn" onClick={() => set(state + 8)}>
+      <button className="btn btn-wide" onClick={() => set(state + 8)}>
         8th
       </button>
-      <button className="btn" onClick={() => set(state + 9)}>
+      <button className="btn btn-wide" onClick={() => set(state + 9)}>
         9th
       </button>
-      <button className="btn" onClick={() => set(state + 10)}>
+      <button className="btn btn-wide" onClick={() => set(state + 10)}>
         10th
       </button>
-      <button className="btn" onClick={() => set(state + 11)}>
+      <button className="btn btn-wide" onClick={() => set(state + 11)}>
         11th
       </button>
-      <button className="btn" onClick={() => set(state + 12)}>
-        12th
+      <button className="btn btn-wide" onClick={() => set(state + 12)}>
+        Octave
       </button>
     </div>
   );
