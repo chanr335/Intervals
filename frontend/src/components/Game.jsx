@@ -33,6 +33,10 @@ function Game() {
       console.log(newNoteList, rootNote, intNote);
       console.log(newNoteList[rootNote], newNoteList[intNote]);
     }
+    return () => {
+      Tone.Transport.stop();
+      Tone.Transport.cancel();
+    };
   }, [rootNote, intNote, newNoteList]);
 
   function nextClick() {
@@ -44,6 +48,15 @@ function Game() {
     setIntNote(i);
   }
 
+  function repeatClick() {
+    playInterval(newNoteList, rootNote, intNote);
+
+    return () => {
+      Tone.Transport.stop();
+      Tone.Transport.cancel();
+    };
+  }
+
   return (
     <div>
       <div className="flex justify-between">
@@ -51,7 +64,9 @@ function Game() {
           {/* Next: {rootNote} , {intNote} */}
           Next
         </button>
-        <button className="btn"></button>
+        <button className="btn" onClick={repeatClick}>
+          Repeat
+        </button>
       </div>
       <div className="flex mb-10" />
       <div className="flex bg-sky-50 card card-compact shadow-xl">
