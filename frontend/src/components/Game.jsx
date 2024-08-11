@@ -1,13 +1,13 @@
-import { useState } from "react";
-import * as Tone from "tone";
+import { useState, useEffect } from "react";
 import Button from "./Button";
+import * as Tone from "tone";
 import listShift from "../utils/listShift";
+import playInterval from "../utils/playInterval.js";
 
 function Game() {
-  const synth = new Tone.Synth().toDestination();
   const [rootNote, setRootNote] = useState(null);
   const [intNote, setIntNote] = useState(null);
-  const [state, set] = useState(0);
+  const [state, set] = useState(-1);
 
   const notes = [
     "A",
@@ -24,36 +24,35 @@ function Game() {
     "G#",
   ];
 
-  function handleClick() {
-    let rootNote = Math.floor(Math.random() * notes.length);
-    const newNoteList = listShift(rootNote);
+  const [newNoteList, setNewNoteList] = useState(notes);
 
-    rootNote = 0;
-    let intNote = Math.floor(Math.random() * newNoteList.length);
+  useEffect(() => {
+    // Only play the interval if both rootNote and intNote are set
+    if (rootNote !== null && intNote !== null) {
+      playInterval(newNoteList, rootNote, intNote);
+      console.log(newNoteList, rootNote, intNote);
+      console.log(newNoteList[rootNote], newNoteList[intNote]);
+    }
+  }, [rootNote, intNote, newNoteList]);
 
-    setRootNote(rootNote);
-    setIntNote(intNote);
+  function nextClick() {
+    let r = Math.floor(Math.random() * notes.length);
+    setNewNoteList(listShift(r));
 
-    console.log(rootNote, intNote);
-    console.log(newNoteList[rootNote], newNoteList[intNote]);
-
-    Tone.getTransport().start();
-    //Play the notes
-    Tone.getTransport().schedule((time) => {
-      synth.triggerAttackRelease(newNoteList[rootNote] + "4", "8n", time);
-    }, "+0"); // 0 seconds from now
-
-    Tone.getTransport().schedule((time) => {
-      synth.triggerAttackRelease(newNoteList[intNote] + "5", "8n", time);
-    }, "+1"); // 1 second from now
+    setRootNote(0);
+    const i = Math.floor(Math.random() * newNoteList.length);
+    setIntNote(i);
   }
 
   return (
     <div>
-      <button className="btn" onClick={handleClick}>
-        {/* Next: {rootNote} , {intNote} */}
-        Next
-      </button>
+      <div className="flex justify-between">
+        <button className="btn" onClick={nextClick}>
+          {/* Next: {rootNote} , {intNote} */}
+          Next
+        </button>
+        <button className="btn"></button>
+      </div>
       <div className="flex mb-10" />
       <div className="flex bg-sky-50 card card-compact shadow-xl">
         <Button state={state} set={set} intNote={intNote} />
