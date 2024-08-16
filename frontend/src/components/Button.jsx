@@ -27,7 +27,7 @@ export default function Button({
     set(-1);
   }
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center bg-secondary border border-secondary rounded">
       <div className="grid grid-cols-3 gap-3 justify-center">
         <button className="custom-btn" onClick={() => set(0)}>
           Unison
@@ -45,24 +45,27 @@ export default function Button({
           Major Third
         </button>
         <button className="custom-btn" onClick={() => set(5)}>
-          Perfect Fourth
+          Minor Fourth
         </button>
         <button className="custom-btn" onClick={() => set(6)}>
-          Perfect Fifth
+          Perfect Fourth
         </button>
         <button className="custom-btn" onClick={() => set(7)}>
-          Minor Sixth
+          Perfect Fifth
         </button>
         <button className="custom-btn" onClick={() => set(8)}>
-          Major Sixth
+          Minor Sixth
         </button>
         <button className="custom-btn" onClick={() => set(9)}>
-          Minor Seventh
+          Major Sixth
         </button>
         <button className="custom-btn" onClick={() => set(10)}>
-          Major Seventh
+          Minor Seventh
         </button>
         <button className="custom-btn" onClick={() => set(11)}>
+          Major Seventh
+        </button>
+        <button className="custom-btn" onClick={() => set(12)}>
           Octave
         </button>
       </div>

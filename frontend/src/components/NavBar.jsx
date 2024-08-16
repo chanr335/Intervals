@@ -1,6 +1,6 @@
 export default function NavBar() {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-primary">
       <div className="flex-none">
         <button className="btn btn-square btn-ghost">
           <svg
@@ -19,7 +19,7 @@ export default function NavBar() {
         </button>
       </div>
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl text-primary">Intervals</a>
+        <a className="btn btn-ghost text-xl text-default">Intervals</a>
       </div>
       <div className="flex-none">
         <button className="btn btn-square btn-ghost">
@@ -41,4 +41,3 @@ export default function NavBar() {
     </div>
   );
 }
-

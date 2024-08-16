@@ -6,7 +6,7 @@ import Box from "./components/Box";
 function App() {
   return (
     <>
-      <div className="flex justify-start" data-theme="lemonade">
+      <div className="flex justify-start" data-theme="retro">
         <NavBar />
       </div>
 

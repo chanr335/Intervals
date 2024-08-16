@@ -6,3 +6,6 @@
   @apply btn btn-wide font-semibold border-8 border-blue-300;
 }
 
+.game-box {
+  @apply w-2/3 border border-primary p-4 rounded shadow-xl;
+}

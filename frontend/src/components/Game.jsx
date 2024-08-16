@@ -9,23 +9,7 @@ function Game() {
   const [intNote, setIntNote] = useState(null);
   const [state, set] = useState(-1);
   const [ansStatus, setAnsStatus] = useState(null);
-
-  const notes = [
-    "A",
-    "A#",
-    "B",
-    "C",
-    "C#",
-    "D",
-    "D#",
-    "E",
-    "F",
-    "F#",
-    "G",
-    "G#",
-  ];
-
-  const [newNoteList, setNewNoteList] = useState(notes);
+  const [newNoteList, setNewNoteList] = useState(null);
 
   useEffect(() => {
     // Only play the interval if both rootNote and intNote are set
@@ -41,11 +25,11 @@ function Game() {
   }, [rootNote, intNote, newNoteList]);
 
   function nextClick() {
-    let r = Math.floor(Math.random() * notes.length);
+    let r = Math.floor(Math.random() * 12);
     setNewNoteList(listShift(r));
 
     setRootNote(0);
-    const i = Math.floor(Math.random() * newNoteList.length);
+    const i = Math.floor(Math.random() * 12);
     setIntNote(i);
   }
 
@@ -60,7 +44,7 @@ function Game() {
 
   return (
     <div>
-      <div className="flex justify-between">
+      <div className="flex justify-between border border-primary">
         <button className="btn" onClick={nextClick}>
           {/* Next: {rootNote} , {intNote} */}
           Next
