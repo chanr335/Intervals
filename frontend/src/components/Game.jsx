@@ -8,6 +8,7 @@ function Game() {
   const [rootNote, setRootNote] = useState(null);
   const [intNote, setIntNote] = useState(null);
   const [state, set] = useState(-1);
+  const [ansStatus, setAnsStatus] = useState(null);
 
   const notes = [
     "A",
@@ -64,13 +65,26 @@ function Game() {
           {/* Next: {rootNote} , {intNote} */}
           Next
         </button>
+        <div
+          className={`font-extrabold ${
+            ansStatus === "Correct" ? "text-green-500" : "text-red-500"
+          }`}
+        >
+          {ansStatus}
+        </div>
         <button className="btn" onClick={repeatClick}>
           Repeat
         </button>
       </div>
       <div className="flex mb-10" />
-      <div className="flex bg-sky-50 card card-compact shadow-xl">
-        <Button state={state} set={set} intNote={intNote} />
+      <div className="flex bg-sky-50 card card-compact shadow-xl bg-secondary">
+        <Button
+          state={state}
+          set={set}
+          intNote={intNote}
+          ansStatus={ansStatus}
+          setAnsStatus={setAnsStatus}
+        />
       </div>
     </div>
   );

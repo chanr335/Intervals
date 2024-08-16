@@ -2,7 +2,13 @@ import buttonCheck from "../utils/buttonCheck";
 import { useEffect } from "react";
 import "../index.css";
 
-export default function Button({ state, set, intNote }) {
+export default function Button({
+  state,
+  set,
+  intNote,
+  ansStatus,
+  setAnsStatus,
+}) {
   useEffect(() => {
     if (state !== -1) {
       handleClick(state, intNote);
@@ -12,14 +18,16 @@ export default function Button({ state, set, intNote }) {
   function handleClick(state, intNote) {
     const correct = buttonCheck(state, intNote);
     if (correct) {
+      setAnsStatus("Correct");
       console.log("correct");
     } else {
+      setAnsStatus("Incorrect");
       console.log("incorrect");
     }
     set(-1);
   }
   return (
-    <div className="flex justify-center" data-theme="lemonade">
+    <div className="flex justify-center">
       <div className="grid grid-cols-3 gap-3 justify-center">
         <button className="custom-btn" onClick={() => set(0)}>
           Unison
