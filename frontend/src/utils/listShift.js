@@ -12,7 +12,6 @@ function listShift(rootNote) {
     ["A", 9],
     ["A#", 10],
     ["B", 11],
-    ["C", 12],
   ];
   const newNotes = notes;
 

@@ -4,12 +4,13 @@ import * as Tone from "tone";
 import listShift from "../utils/listShift";
 import playInterval from "../utils/playInterval.js";
 
-function Game() {
+function Game({ gamemode }) {
   const [rootNote, setRootNote] = useState(null);
   const [intNote, setIntNote] = useState(null);
   const [state, set] = useState(-1);
   const [ansStatus, setAnsStatus] = useState(null);
   const [newNoteList, setNewNoteList] = useState(null);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     // Only play the interval if both rootNote and intNote are set
@@ -34,7 +35,7 @@ function Game() {
   }
 
   function repeatClick() {
-    playInterval(newNoteList, rootNote, intNote);
+    playInterval(gamemode, newNoteList, rootNote, intNote);
 
     return () => {
       Tone.Transport.stop();
@@ -44,19 +45,24 @@ function Game() {
 
   return (
     <div>
-      <div className="flex justify-between border border-primary">
-        <button className="btn" onClick={nextClick}>
-          {/* Next: {rootNote} , {intNote} */}
+      <div className="flex justify-between">
+        <button
+          className="btn btn-wide btn-accent border-2 border-primary rounded"
+          onClick={nextClick}
+        >
           Next
         </button>
         <div
-          className={`font-extrabold ${
+          className={`flex items-center font-extrabold ${
             ansStatus === "Correct" ? "text-green-500" : "text-red-500"
           }`}
         >
           {ansStatus}
         </div>
-        <button className="btn" onClick={repeatClick}>
+        <button
+          className="btn btn-wide btn-accent rounded"
+          onClick={repeatClick}
+        >
           Repeat
         </button>
       </div>
@@ -66,9 +72,13 @@ function Game() {
           state={state}
           set={set}
           intNote={intNote}
-          ansStatus={ansStatus}
           setAnsStatus={setAnsStatus}
+          score={score}
+          setScore={setScore}
         />
+      </div>
+      <div className="flex justify-end items-end font-extrabold">
+        <div>{score}</div>
       </div>
     </div>
   );

@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 .custom-btn {
-  @apply btn btn-wide font-semibold border-8 border-blue-300;
+  @apply btn btn-wide font-semibold border-2 border-white;
 }
 
 .game-box {
-  @apply w-2/3 border border-primary p-4 rounded shadow-xl;
+  @apply w-2/3 border-4 border-primary p-4 rounded shadow-xl;
 }

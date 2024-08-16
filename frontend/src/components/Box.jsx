@@ -1,13 +1,22 @@
 import Game from "./Game";
+import Dropdown from "./Dropdown.jsx";
 import "../index.css";
+import { useState } from "react";
 
-export default function Box() {
+function Box() {
+  const [gamemode, setGamemode] = useState("Ascending");
+
   return (
-    <div className="w-full h-screen flex justify-center p-52">
+    <div className="w-full h-1/2 flex justify-center p-8">
       <div className="game-box">
-        <h2 className="card-title">Ascending</h2>
-        <Game />
+        <Game gamemode={gamemode} />
+      </div>
+
+      <div>
+        <Dropdown gamemode={gamemode} setGamemode={setGamemode} />
       </div>
     </div>
   );
 }
+
+export default Box;

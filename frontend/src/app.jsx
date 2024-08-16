@@ -1,17 +1,15 @@
 // import { useState } from 'react'
-
-import NavBar from "./components/NavBar";
 import Box from "./components/Box";
 
 function App() {
   return (
     <>
-      <div className="flex justify-start" data-theme="retro">
-        <NavBar />
+      <div data-theme="black"></div>
+      <div className="flex justify-center font-extrabold text-6xl p-2">
+        intervals
       </div>
-
-      <div className="flex justify-center items-center min-h-screen">
-        <Box></Box>
+      <div className="flex flex-col justify-center items-center min-h-screen">
+        <Box />
       </div>
     </>
   );

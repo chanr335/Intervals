@@ -6,8 +6,9 @@ export default function Button({
   state,
   set,
   intNote,
-  ansStatus,
   setAnsStatus,
+  score,
+  setScore,
 }) {
   useEffect(() => {
     if (state !== -1) {
@@ -19,6 +20,7 @@ export default function Button({
     const correct = buttonCheck(state, intNote);
     if (correct) {
       setAnsStatus("Correct");
+      setScore(score + 1);
       console.log("correct");
     } else {
       setAnsStatus("Incorrect");
@@ -27,7 +29,7 @@ export default function Button({
     set(-1);
   }
   return (
-    <div className="flex justify-center bg-secondary border border-secondary rounded">
+    <div className="flex justify-center bg-secondary border-4 border-primary rounded">
       <div className="grid grid-cols-3 gap-3 justify-center">
         <button className="custom-btn" onClick={() => set(0)}>
           Unison
@@ -65,9 +67,11 @@ export default function Button({
         <button className="custom-btn" onClick={() => set(11)}>
           Major Seventh
         </button>
+        <div></div>
         <button className="custom-btn" onClick={() => set(12)}>
           Octave
         </button>
+        <div></div>
       </div>
     </div>
   );
