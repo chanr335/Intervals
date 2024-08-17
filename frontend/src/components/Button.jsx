@@ -2,6 +2,15 @@ import buttonCheck from "../utils/buttonCheck";
 import { useEffect } from "react";
 import "../index.css";
 
+//Function that displays Grid of buttons
+/*
+ * state: state of the answer
+ * set: sets the state of the answer
+ * intNote: the true interval note -> the answer
+ * setAnsStatus: sets the answer status to correct or incorrect, refers to "Game"
+ * score: the user's score
+ * setScore: setting the user's score
+ */
 export default function Button({
   state,
   set,
@@ -17,15 +26,15 @@ export default function Button({
   }, [state]);
 
   function handleClick(state, intNote) {
+    //checks if the answer set by the user is correct
     const correct = buttonCheck(state, intNote);
     if (correct) {
       setAnsStatus("Correct");
       setScore(score + 1);
-      console.log("correct");
     } else {
       setAnsStatus("Incorrect");
-      console.log("incorrect");
     }
+    //set the state to -1 to reset the answer for the next round
     set(-1);
   }
   return (

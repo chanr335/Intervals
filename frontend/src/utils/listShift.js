@@ -1,3 +1,4 @@
+//Shifts list for different keys
 function listShift(rootNote) {
   const notes = [
     ["C", 0],

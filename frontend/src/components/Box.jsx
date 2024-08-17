@@ -3,7 +3,9 @@ import Dropdown from "./Dropdown.jsx";
 import "../index.css";
 import { useState } from "react";
 
+//Area for game and buttons
 function Box() {
+  //Gamemode state used to set Ascending or Descending gamemode
   const [gamemode, setGamemode] = useState("Ascending");
 
   return (

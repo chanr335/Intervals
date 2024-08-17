@@ -1,3 +1,5 @@
+//Takes arguments for gamemode and setGamemode,
+//allowing user to pick either
 function Dropdown({ gamemode, setGamemode }) {
   return (
     <details className="dropdown">

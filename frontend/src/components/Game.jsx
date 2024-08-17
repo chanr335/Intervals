@@ -4,6 +4,7 @@ import * as Tone from "tone";
 import listShift from "../utils/listShift";
 import playInterval from "../utils/playInterval.js";
 
+//Takes argument "gamemode" to determine which order to play notes
 function Game({ gamemode }) {
   const [rootNote, setRootNote] = useState(null);
   const [intNote, setIntNote] = useState(null);
@@ -12,20 +13,26 @@ function Game({ gamemode }) {
   const [newNoteList, setNewNoteList] = useState(null);
   const [score, setScore] = useState(0);
 
+  //UseEffect watches changes in rootNote, intNote and newNoteList
   useEffect(() => {
     // Only play the interval if both rootNote and intNote are set
     if (rootNote !== null && intNote !== null) {
+      //changes to the states will only happen when user moves to the next round
+      //which will then play the notes
       playInterval(gamemode, newNoteList, rootNote, intNote);
       console.log(newNoteList, rootNote, intNote);
       console.log(newNoteList[rootNote], newNoteList[intNote]);
     }
+    //Ensure that notes stop playing by next round
     return () => {
       Tone.Transport.stop();
       Tone.Transport.cancel();
     };
   }, [rootNote, intNote, newNoteList]);
 
+  //Function that runs onclick for "Next" button
   function nextClick() {
+    //Randomizes notes list
     let r = Math.floor(Math.random() * 12);
     setNewNoteList(listShift(r));
 
@@ -34,6 +41,7 @@ function Game({ gamemode }) {
     setIntNote(i);
   }
 
+  //Function that runs onclick for "Repeat" button
   function repeatClick() {
     playInterval(gamemode, newNoteList, rootNote, intNote);
 
@@ -44,6 +52,7 @@ function Game({ gamemode }) {
   }
 
   return (
+    //UI for function buttons and answer status
     <div>
       <div className="flex justify-between">
         <button
