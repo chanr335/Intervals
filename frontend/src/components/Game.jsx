@@ -5,7 +5,7 @@ import listShift from "../utils/listShift";
 import playInterval from "../utils/playInterval.js";
 
 //Takes argument "gamemode" to determine which order to play notes
-function Game({ gamemode }) {
+function Game({ gamemode, gameStart }) {
   const [rootNote, setRootNote] = useState(null);
   const [intNote, setIntNote] = useState(null);
   const [state, set] = useState(-1);

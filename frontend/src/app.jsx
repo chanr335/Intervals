@@ -6,7 +6,7 @@ function App() {
     <>
       <div data-theme="black"></div>
       <div className="flex flex-col justify-center items-center min-h-screen">
-        <div className="font-extrabold text-6xl mb-4">intervals.</div>
+        <div className="font-extrabold text-6xl mb-4">intervals</div>
         <Box />
       </div>
     </>
