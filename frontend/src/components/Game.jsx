@@ -15,7 +15,7 @@ function Game({ gamemode }) {
   useEffect(() => {
     // Only play the interval if both rootNote and intNote are set
     if (rootNote !== null && intNote !== null) {
-      playInterval(newNoteList, rootNote, intNote);
+      playInterval(gamemode, newNoteList, rootNote, intNote);
       console.log(newNoteList, rootNote, intNote);
       console.log(newNoteList[rootNote], newNoteList[intNote]);
     }

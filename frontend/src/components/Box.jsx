@@ -7,7 +7,7 @@ function Box() {
   const [gamemode, setGamemode] = useState("Ascending");
 
   return (
-    <div className="w-full h-1/2 flex justify-center p-8">
+    <div className="w-full h-1/2 flex flex-col justify-center items-center">
       <div className="game-box">
         <Game gamemode={gamemode} />
       </div>
