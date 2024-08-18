@@ -38,8 +38,8 @@ export default function Button({
     set(-1);
   }
   return (
-    <div className="flex justify-center bg-secondary border-4 border-primary rounded">
-      <div className="grid grid-cols-3 gap-3 justify-center">
+    <div className="flex justify-center bg-[#202124] border-4 border-primary">
+      <div className="grid grid-cols-3 gap-4 gap-x-16 justify-center p-4">
         <button className="custom-btn" onClick={() => set(0)}>
           Unison
         </button>

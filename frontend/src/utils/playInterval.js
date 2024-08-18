@@ -20,7 +20,6 @@ function playInterval(gamemode, newNoteList, rootNote, intNote) {
   //Depending on the gamemode, logic will change for interval note pitch
   if (gamemode === "Ascending") {
     if (newNoteList[intNote][1] < newNoteList[rootNote][1]) {
-      console.log(newNoteList[intNote][1] < newNoteList[rootNote][1]);
       Tone.getTransport().schedule((time) => {
         synth.triggerAttackRelease(newNoteList[intNote][0] + "5", "8n", time);
       }, "+1"); // 1 second from now
