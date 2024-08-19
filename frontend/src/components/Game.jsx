@@ -13,7 +13,7 @@ function Game({ gamemode, gameStart, setGameStart }) {
   const [ansStatusDisplay, setAnsStatusDisplay] = useState(null);
   const [newNoteList, setNewNoteList] = useState(null);
   const [score, setScore] = useState(0);
-
+  const [lives, setLives] = useState(3);
   //UseEffect watches changes in rootNote, intNote and newNoteList
   useEffect(() => {
     // Only play the interval if both rootNote and intNote are set
@@ -53,9 +53,15 @@ function Game({ gamemode, gameStart, setGameStart }) {
       setAnsStatus(null);
     } else if (ansStatus === "Incorrect") {
       //If incorrect answer, reset the game
+      setLives(lives - 1);
+      if (lives === 0) {
+        setGameStart(0);
+        setAnsStatusDisplay("Incorrect");
+      } else if (lives > 0) {
+        setGameStart(1);
+        setAnsStatusDisplay(null);
+      }
       setAnsStatus(null);
-      setAnsStatusDisplay(null);
-      setGameStart(0);
       setScore(0);
     }
   }, [gameStart, ansStatus]);
