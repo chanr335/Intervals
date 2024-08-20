@@ -16,10 +16,12 @@ function listShift(rootNote) {
   ];
   const newNotes = notes;
 
-  //calculate the interval according to the root note
+  // calculate the interval according to the root note
   for (let i = rootNote; i < notes.length; i += 1) {
     newNotes.unshift(newNotes.pop());
   }
+  //Add octave
+  newNotes.push([newNotes[0][0], 12]);
 
   return newNotes;
 }

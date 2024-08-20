@@ -14,7 +14,6 @@ function Game({ gamemode, gameStart, setGameStart }) {
   const [newNoteList, setNewNoteList] = useState(null);
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(2);
-  const [isPlaying, setIsPlaying] = useState(false);
 
   //UseEffect watches changes in rootNote, intNote and newNoteList
   useEffect(() => {
@@ -41,7 +40,7 @@ function Game({ gamemode, gameStart, setGameStart }) {
       setNewNoteList(listShift(r));
 
       setRootNote(0);
-      const i = Math.floor(Math.random() * 12);
+      const i = Math.floor(Math.random() * 13);
       setIntNote(i);
       setGameStart(2);
     }
@@ -59,6 +58,7 @@ function Game({ gamemode, gameStart, setGameStart }) {
         setGameStart(0);
         setScore(0);
         setLives(2);
+        setAnsStatusDisplay(null);
       } else if (lives > 0) {
         setGameStart(1);
       }

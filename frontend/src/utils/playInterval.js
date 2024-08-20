@@ -11,6 +11,7 @@ function playInterval(gamemode, newNoteList, rootNote, intNote) {
   //set up note player
   const synth = new Tone.Synth().toDestination();
   Tone.getTransport().start();
+  let pitch = 4;
 
   //Play the rootNote
   Tone.getTransport().schedule((time) => {
@@ -19,31 +20,34 @@ function playInterval(gamemode, newNoteList, rootNote, intNote) {
 
   //Depending on the gamemode, logic will change for interval note pitch
   if (gamemode === "Ascending") {
-    if (newNoteList[intNote][1] < newNoteList[rootNote][1]) {
-      Tone.getTransport().schedule((time) => {
-        synth.triggerAttackRelease(newNoteList[intNote][0] + "5", "8n", time);
-      }, "+1"); // 1 second from now
+    if (
+      newNoteList[intNote][1] < newNoteList[rootNote][1] ||
+      newNoteList[intNote][1] === 12
+    ) {
+      pitch = 5;
     } else {
-      Tone.getTransport().schedule((time) => {
-        synth.triggerAttackRelease(newNoteList[intNote][0] + "4", "8n", time);
-      }, "+1"); // 1 second from now
+      pitch = 4;
     }
+    Tone.getTransport().schedule((time) => {
+      synth.triggerAttackRelease(
+        `${newNoteList[intNote][0]}${pitch}`,
+        "8n",
+        time,
+      );
+    }, "+1"); // 1 second from now
   } else if (gamemode === "Descending") {
-    if (newNoteList[intNote][1] > newNoteList[rootNote][1]) {
-      Tone.getTransport().schedule((time) => {
-        synth.triggerAttackRelease(newNoteList[intNote][0] + "3", "8n", time);
-      }, "+1"); // 1 second from now
+    if (
+      newNoteList[intNote][1] > newNoteList[rootNote][1] ||
+      newNoteList[intNote][1] === 12
+    ) {
+      pitch = 3;
     } else {
-      Tone.getTransport().schedule((time) => {
-        synth.triggerAttackRelease(newNoteList[intNote][0] + "4", "8n", time);
-      }, "+1"); // 1 second from now
+      pitch = 4;
     }
+    Tone.getTransport().schedule((time) => {
+      synth.triggerAttackRelease(newNoteList[intNote][0] + "4", "8n", time);
+    }, "+1"); // 1 second from now
   }
-
-  return () => {
-    Tone.Transport.stop();
-    Tone.Transport.cancel();
-  };
 }
 
 export default playInterval;
