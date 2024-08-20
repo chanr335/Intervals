@@ -39,6 +39,11 @@ function playInterval(gamemode, newNoteList, rootNote, intNote) {
       }, "+1"); // 1 second from now
     }
   }
+
+  return () => {
+    Tone.Transport.stop();
+    Tone.Transport.cancel();
+  };
 }
 
 export default playInterval;

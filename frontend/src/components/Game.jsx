@@ -13,22 +13,21 @@ function Game({ gamemode, gameStart, setGameStart }) {
   const [ansStatusDisplay, setAnsStatusDisplay] = useState(null);
   const [newNoteList, setNewNoteList] = useState(null);
   const [score, setScore] = useState(0);
-  const [lives, setLives] = useState(3);
+  const [lives, setLives] = useState(2);
+  const [isPlaying, setIsPlaying] = useState(false);
+
   //UseEffect watches changes in rootNote, intNote and newNoteList
   useEffect(() => {
     // Only play the interval if both rootNote and intNote are set
     if (rootNote !== null && intNote !== null) {
       //changes to the states will only happen when user moves to the next round
       //which will then play the notes
+      Tone.Transport.stop();
+      Tone.Transport.cancel();
       playInterval(gamemode, newNoteList, rootNote, intNote);
       console.log(newNoteList, rootNote, intNote);
       console.log(newNoteList[rootNote], newNoteList[intNote]);
     }
-    //Ensure that notes stop playing by next round
-    return () => {
-      Tone.Transport.stop();
-      Tone.Transport.cancel();
-    };
   }, [rootNote, intNote, newNoteList]);
 
   useEffect(() => {
@@ -46,42 +45,42 @@ function Game({ gamemode, gameStart, setGameStart }) {
       setIntNote(i);
       setGameStart(2);
     }
+  }, [gameStart]);
+
+  useEffect(() => {
     //Once ans Status has been changed, play new notes
     if (ansStatus === "Correct") {
       setGameStart(1);
       setAnsStatusDisplay("Correct");
-      setAnsStatus(null);
     } else if (ansStatus === "Incorrect") {
       //If incorrect answer, reset the game
       setLives(lives - 1);
-      if (lives === 0) {
+      if (lives === 1) {
         setGameStart(0);
-        setAnsStatusDisplay("Incorrect");
+        setScore(0);
+        setLives(2);
       } else if (lives > 0) {
         setGameStart(1);
-        setAnsStatusDisplay(null);
       }
-      setAnsStatus(null);
-      setScore(0);
+      setAnsStatusDisplay("Incorrect");
     }
-  }, [gameStart, ansStatus]);
+    setAnsStatus(null);
+  }, [ansStatus]);
 
   //Function that runs onclick for "Repeat" button
   function repeatClick() {
+    Tone.Transport.stop();
+    Tone.Transport.cancel();
     playInterval(gamemode, newNoteList, rootNote, intNote);
-
-    return () => {
-      Tone.Transport.stop();
-      Tone.Transport.cancel();
-    };
   }
 
   return (
     //UI for function buttons and answer status
     <div>
       <div className="flex justify-between">
-        <div className="flex bg-secondary rounded w-1/5 items-center justify-center font-semibold text-sm">
+        <div className="flex flex-col bg-secondary rounded w-1/5 items-center justify-center font-semibold text-sm">
           <div>SCORE: {score}</div>
+          <div>LIVES: {lives}</div>
         </div>
         <div
           className={
