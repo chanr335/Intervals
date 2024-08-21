@@ -6,7 +6,7 @@ function Blurbox({ setGameStart }) {
     >
       <span className="absolute inset-0 h-full btn btn-primary blur-sm"></span>
       <span className="text-2xl relative text-white font-medium z-10">
-        click to begin
+        click to START
       </span>
     </button>
   );

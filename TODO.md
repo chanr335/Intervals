@@ -1,9 +1,7 @@
-( ) - Center buttons in the game
-( ) - Create an Ascending Game and Descending Game
-( ) - Tell user if they got it correct
-( ) - Tell user their score
-( ) - Give users 1 life
-( ) - Update to animation UI
+( ) - Show what "level" user is on
+( ) - Death screen
+( ) - Check marks and Xs instead of correct and incorrect
+( ) - instructions
 
 ( ) - Add Auth (Kinde)
 ( ) - Connect to database (PostgreSQL) for scores and high scores

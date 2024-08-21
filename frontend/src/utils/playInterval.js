@@ -45,7 +45,11 @@ function playInterval(gamemode, newNoteList, rootNote, intNote) {
       pitch = 4;
     }
     Tone.getTransport().schedule((time) => {
-      synth.triggerAttackRelease(newNoteList[intNote][0] + "4", "8n", time);
+      synth.triggerAttackRelease(
+        `${newNoteList[intNote][0]}${pitch}`,
+        "8n",
+        time,
+      );
     }, "+1"); // 1 second from now
   }
 }
