@@ -4,11 +4,13 @@ import "../index.css";
 import { useState } from "react";
 import Blurbox from "./Blurbox.jsx";
 
-//Area for game and buttons ^_^
+//Area for game and buttons
 function Box() {
   //Gamemode state used to set Ascending or Descending gamemode
   const [gamemode, setGamemode] = useState("Ascending");
-  //0: False :3
+  //round, score
+  const [scorecard, setScorecard] = useState([null, null]);
+  //0: False
   //1: True
   //2: Pause
   const [gameStart, setGameStart] = useState(0);
@@ -20,8 +22,12 @@ function Box() {
           gamemode={gamemode}
           gameStart={gameStart}
           setGameStart={setGameStart}
+          scorecard={scorecard}
+          setScorecard={setScorecard}
         />
-        {gameStart === 0 && <Blurbox setGameStart={setGameStart} />}
+        {gameStart === 0 && (
+          <Blurbox setGameStart={setGameStart} scorecard={scorecard} />
+        )}
       </div>
       <div>
         <Dropdown

@@ -5,7 +5,7 @@ import listShift from "../utils/listShift";
 import playInterval from "../utils/playInterval.js";
 
 //Takes argument "gamemode" to determine which order to play notes
-function Game({ gamemode, gameStart, setGameStart }) {
+function Game({ gamemode, gameStart, setGameStart, scorecard, setScorecard }) {
   const [rootNote, setRootNote] = useState(null);
   const [intNote, setIntNote] = useState(null);
   const [state, set] = useState(-1);
@@ -13,6 +13,7 @@ function Game({ gamemode, gameStart, setGameStart }) {
   const [ansStatusDisplay, setAnsStatusDisplay] = useState(null);
   const [newNoteList, setNewNoteList] = useState(null);
   const [score, setScore] = useState(0);
+  const [level, setLevel] = useState(1);
   const [lives, setLives] = useState(2);
 
   //UseEffect watches changes in rootNote, intNote and newNoteList
@@ -34,6 +35,9 @@ function Game({ gamemode, gameStart, setGameStart }) {
     //1: True - game is started
     //2: Pause - User is in the middle of picking button
     //If game has been started, play notes and put on pause
+    if (gameStart === 0) {
+      setAnsStatusDisplay(null);
+    }
     if (gameStart === 1) {
       //Randomizes notes list
       let r = Math.floor(Math.random() * 12);
@@ -51,16 +55,26 @@ function Game({ gamemode, gameStart, setGameStart }) {
     if (ansStatus === "Correct") {
       setGameStart(1);
       setAnsStatusDisplay("Correct");
+      setLevel(level + 1);
+      setScorecard([level + 1, score + 1]);
+      // setScorecard([scorecard[0] + 1, scorecard[1] + 1]);
     } else if (ansStatus === "Incorrect") {
       //If incorrect answer, reset the game
       setLives(lives - 1);
       if (lives === 1) {
+        Tone.Transport.stop();
+        Tone.Transport.cancel();
         setGameStart(0);
         setScore(0);
         setLives(2);
+        setLevel(1);
         setAnsStatusDisplay(null);
       } else if (lives > 0) {
         setGameStart(1);
+        setLevel(level + 1);
+
+        setScorecard([level + 1, score]);
+        // setScorecard([scorecard[0] + 1, scorecard[1]]);
       }
       setAnsStatusDisplay("Incorrect");
     }
@@ -84,9 +98,10 @@ function Game({ gamemode, gameStart, setGameStart }) {
         </div>
         <div
           className={
-            "flex items-center justify-center bg-secondary rounded w-1/5 border-2 border-white font-semibold text-sm"
+            "flex flex-col items-center justify-center bg-secondary rounded w-1/5 border-2 border-white font-semibold text-sm"
           }
         >
+          <span>Round {level}</span>
           <span
             className={`text-center ${ansStatusDisplay === "Correct" ? "text-green-500" : "text-red-500"}`}
           >
