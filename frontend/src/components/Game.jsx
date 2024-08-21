@@ -5,7 +5,13 @@ import listShift from "../utils/listShift";
 import playInterval from "../utils/playInterval.js";
 
 //Takes argument "gamemode" to determine which order to play notes
-function Game({ gamemode, gameStart, setGameStart, scorecard, setScorecard }) {
+function Game({
+  gamemode,
+  gameStart,
+  setGameStart,
+  setScorecard,
+  setFirstRound,
+}) {
   const [rootNote, setRootNote] = useState(null);
   const [intNote, setIntNote] = useState(null);
   const [state, set] = useState(-1);
@@ -39,6 +45,7 @@ function Game({ gamemode, gameStart, setGameStart, scorecard, setScorecard }) {
       setAnsStatusDisplay(null);
     }
     if (gameStart === 1) {
+      setFirstRound(false);
       //Randomizes notes list
       let r = Math.floor(Math.random() * 12);
       setNewNoteList(listShift(r));

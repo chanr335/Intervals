@@ -10,6 +10,7 @@ function Box() {
   const [gamemode, setGamemode] = useState("Ascending");
   //round, score
   const [scorecard, setScorecard] = useState([null, null]);
+  const [firstRound, setFirstRound] = useState(true);
   //0: False
   //1: True
   //2: Pause
@@ -22,11 +23,15 @@ function Box() {
           gamemode={gamemode}
           gameStart={gameStart}
           setGameStart={setGameStart}
-          scorecard={scorecard}
           setScorecard={setScorecard}
+          setFirstRound={setFirstRound}
         />
         {gameStart === 0 && (
-          <Blurbox setGameStart={setGameStart} scorecard={scorecard} />
+          <Blurbox
+            setGameStart={setGameStart}
+            scorecard={scorecard}
+            firstRound={firstRound}
+          />
         )}
       </div>
       <div>
