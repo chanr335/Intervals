@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "express": "^4.19.2",
+    "firebase-admin": "^12.4.0",
     "nodemon": "^3.1.4"
   }
 }
