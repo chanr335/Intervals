@@ -34,7 +34,7 @@ function Box() {
           />
         )}
       </div>
-      <div>
+      <div className="flex ">
         <Dropdown
           gamemode={gamemode}
           setGamemode={setGamemode}

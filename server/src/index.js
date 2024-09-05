@@ -5,9 +5,6 @@ import credentials from "../firebaseAccountKey.json" assert { type: "json" };
 
 const port = process.env.PORT || 3000;
 
-// const admin = require("firebase-admin");
-// const credentials = require("../firebaseAccountKey.json");
-
 admin.initializeApp({
   credential: admin.credential.cert(credentials),
 });

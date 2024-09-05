@@ -120,7 +120,7 @@ function Game({
         </button>
       </div>
       <div className="flex mb-10" />
-      <div className="flex bg-sky-50 card card-compact shadow-xl bg-secondary">
+      <div className="flex card card-compact shadow-xl bg-secondary">
         <Button
           state={state}
           set={set}
